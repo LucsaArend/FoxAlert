@@ -18,3 +18,4 @@ Aqui a lista de parâmetros que pode ser informado no json de retorno.
 | success     | boolean  |     Indica se deve mostrar o ícone de sucesso |
 | message      |  string   |       Mensagem a ser mostrada no alerta |
 | reload | boolean |        Se deve recarregar a página após o usuário clicar no ok do alerta.  |
+| reloadDataTableByID | string | Caso você use o DataTable e precise que uma tabela seja recarregada |

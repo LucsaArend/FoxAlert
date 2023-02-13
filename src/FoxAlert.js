@@ -8,7 +8,9 @@ function FA_ShowMessage(prMessage)
     }
     /* Retorno Padrão Erro */
     if (typeof prMessage.error != "undefined") {
-        return FA_showErrorMessage(prMessage);
+        if (prMessage.error) {
+            return FA_showErrorMessage(prMessage);
+        }
     }
     /* Retorno Laravel */
     if (typeof prMessage.responseJSON != "undefined") {
@@ -17,19 +19,24 @@ function FA_ShowMessage(prMessage)
     if (typeof prMessage.message != "undefined") {
         return FA_showErrorMessage(prMessage);
     }
-
 }
 function FA_showSuccessMessage(prOBJ)
 {
+    /* Reload DataTable */
+    if (typeof prOBJ.reloadDataTableByID != "undefined") {
+        $('#'+prOBJ.reloadDataTableByID).DataTable().ajax.reload();
+    }
     if (typeof prOBJ.title != "undefined") {
         if (typeof prOBJ.reload != "undefined") {
-            Swal.fire(
-                prOBJ.title,
-                prOBJ.message,
-                'success'
-            ).then(function() {
-                document.location.reload(true);
-            });
+            if (prOBJ.reload) {
+                Swal.fire(
+                    prOBJ.title,
+                    prOBJ.message,
+                    'success'
+                ).then(function() {
+                    document.location.reload(true);
+                });
+            }
         } else {
             Swal.fire(
                 prOBJ.title,
@@ -58,6 +65,10 @@ function FA_showSuccessMessage(prOBJ)
 
 function FA_showErrorMessage(prOBJ)
 {
+    /* Reload DataTable */
+    if (typeof prOBJ.reloadDataTableByID != "undefined") {
+        $('#'+prOBJ.reloadDataTableByID).DataTable().ajax.reload();
+    }
     if (typeof prOBJ.title != "undefined") {
         if (typeof prOBJ.reload != "undefined") {
             Swal.fire(
