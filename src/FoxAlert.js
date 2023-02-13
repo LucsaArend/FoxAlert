@@ -26,6 +26,10 @@ function FA_showSuccessMessage(prOBJ)
     if (typeof prOBJ.reloadDataTableByID != "undefined") {
         $('#'+prOBJ.reloadDataTableByID).DataTable().ajax.reload();
     }
+    /* Call Back Function */
+    if (typeof prOBJ.callBackFunction != "undefined") {
+        eval(prOBJ.callBackFunction);
+    }
     if (typeof prOBJ.title != "undefined") {
         if (typeof prOBJ.reload != "undefined") {
             if (prOBJ.reload) {
@@ -68,6 +72,10 @@ function FA_showErrorMessage(prOBJ)
     /* Reload DataTable */
     if (typeof prOBJ.reloadDataTableByID != "undefined") {
         $('#'+prOBJ.reloadDataTableByID).DataTable().ajax.reload();
+    }
+    /* Call Back Function */
+    if (typeof prOBJ.callBackFunction != "undefined") {
+        eval(prOBJ.callBackFunction);
     }
     if (typeof prOBJ.title != "undefined") {
         if (typeof prOBJ.reload != "undefined") {
