@@ -30,6 +30,9 @@ function FA_showSuccessMessage(prOBJ)
     if (typeof prOBJ.callBackFunction != "undefined") {
         eval(prOBJ.callBackFunction);
     }
+    if (typeof prOBJ.callBackFunction2 != "undefined") {
+        eval(prOBJ.callBackFunction2);
+    }
     if (typeof prOBJ.title != "undefined") {
         if (typeof prOBJ.reload != "undefined") {
             if (prOBJ.reload) {
@@ -76,6 +79,9 @@ function FA_showErrorMessage(prOBJ)
     /* Call Back Function */
     if (typeof prOBJ.callBackFunction != "undefined") {
         eval(prOBJ.callBackFunction);
+    }
+    if (typeof prOBJ.callBackFunction2 != "undefined") {
+        eval(prOBJ.callBackFunction2);
     }
     if (typeof prOBJ.title != "undefined") {
         if (typeof prOBJ.reload != "undefined") {
