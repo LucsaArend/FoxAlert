@@ -41,6 +41,9 @@ function FA_showSuccessMessage(prOBJ)
                     prOBJ.message,
                     'success'
                 ).then(function() {
+                    if (typeof prOBJ.callBackFunctionAfter != "undefined") {
+                        eval(prOBJ.callBackFunctionAfter);
+                    }
                     document.location.reload(true);
                 });
             }
@@ -49,7 +52,11 @@ function FA_showSuccessMessage(prOBJ)
                 prOBJ.title,
                 prOBJ.message,
                 'success'
-            )
+            ).then(function() {
+                if (typeof prOBJ.callBackFunctionAfter != "undefined") {
+                    eval(prOBJ.callBackFunctionAfter);
+                }
+            });
         }
     } else {
         if (typeof prOBJ.reload != "undefined") {
@@ -58,6 +65,9 @@ function FA_showSuccessMessage(prOBJ)
                 prOBJ.message,
                 'success'
             ).then(function() {
+                if (typeof prOBJ.callBackFunctionAfter != "undefined") {
+                    eval(prOBJ.callBackFunctionAfter);
+                }
                 document.location.reload(true);
             });
         } else {
@@ -65,7 +75,11 @@ function FA_showSuccessMessage(prOBJ)
                 'Sucesso',
                 prOBJ.message,
                 'success'
-            )
+            ).then(function() {
+                if (typeof prOBJ.callBackFunctionAfter != "undefined") {
+                    eval(prOBJ.callBackFunctionAfter);
+                }
+            });
         }
     }
 }
@@ -90,6 +104,9 @@ function FA_showErrorMessage(prOBJ)
                 prOBJ.message,
                 'error'
             ).then(function() {
+                if (typeof prOBJ.callBackFunctionAfter != "undefined") {
+                    eval(prOBJ.callBackFunctionAfter);
+                }
                 document.location.reload(true);
             });
         } else {
@@ -97,7 +114,11 @@ function FA_showErrorMessage(prOBJ)
                 prOBJ.title,
                 prOBJ.message,
                 'error'
-            )
+            ).then(function() {
+                if (typeof prOBJ.callBackFunctionAfter != "undefined") {
+                    eval(prOBJ.callBackFunctionAfter);
+                }
+            });
         }
     } else {
         if (typeof prOBJ.reload != "undefined") {
@@ -106,6 +127,9 @@ function FA_showErrorMessage(prOBJ)
                 prOBJ.message,
                 'error'
             ).then(function() {
+                if (typeof prOBJ.callBackFunctionAfter != "undefined") {
+                    eval(prOBJ.callBackFunctionAfter);
+                }
                 document.location.reload(true);
             });
         } else {
@@ -113,7 +137,11 @@ function FA_showErrorMessage(prOBJ)
                 'Oops',
                 prOBJ.message,
                 'error'
-            )
+            ).then(function() {
+                if (typeof prOBJ.callBackFunctionAfter != "undefined") {
+                    eval(prOBJ.callBackFunctionAfter);
+                }
+            });
         }
     }
 }
