@@ -41,6 +41,9 @@ function registerFACurrencyEvents() {
 
 function foxCurrencyFloat(prInputID) {
     let value = $('#'+prInputID).val();
+    if(value <= 0){
+        return getFoxAsomeNumbers("0");
+    }
     if (value.indexOf(",") >= 0) {
         let partRight = value.substring(value.indexOf(",")+1,value.length);
         let partLeft = value.substring(0,value.indexOf(","));
@@ -63,28 +66,31 @@ function formatFloatCurrency(input){
     //Format float values to string with mask R$ Real Brasil
     //inputString Example: "1000.52"
     // get input value
-    if(typeof input !== 'number'){
-        return 'R$ 0,00';
+    let input_val
+    if(isNaN(input)){
+        input_val = "0";
     } else {
-        let input_val = input.toString();
-        input_val = parseFloat(input_val).toFixed(2);
-        input_val = input_val.toString();
-        input_val = input_val.replace('.',',');
+        input_val = input.toString();
+    }
+    console.log(input_val);
 
-        // check for decimal
-        if (input_val.indexOf(",") >= 0) {
-            if (input_val.indexOf(",") === (input_val.length -1)) {
-                return;
-            }
-            let partRight = input_val.substring(input_val.indexOf(",")+1,input_val.length);
-            let partLeft = input_val.substring(0,input_val.indexOf(","));
-            //alert(partRight);
-            //alert(partLeft);
-            return 'R$ ' + formatNumber(partLeft)  + ',' + partRight;
-            //alert(number);
-        } else {
-            return 'R$ ' + formatNumber(input_val) + ',00'
+    input_val = parseFloat(input_val).toFixed(2);
+    input_val = input_val.toString();
+    input_val = input_val.replace('.',',');
+
+    // check for decimal
+    if (input_val.indexOf(",") >= 0) {
+        if (input_val.indexOf(",") === (input_val.length -1)) {
+            return;
         }
+        let partRight = input_val.substring(input_val.indexOf(",")+1,input_val.length);
+        let partLeft = input_val.substring(0,input_val.indexOf(","));
+        //alert(partRight);
+        //alert(partLeft);
+        return 'R$ ' + formatNumber(partLeft)  + ',' + partRight;
+        //alert(number);
+    } else {
+        return 'R$ ' + formatNumber(input_val) + ',00'
     }
 }
 function formatCurrency(input, prAux) {
